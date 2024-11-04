@@ -6,3 +6,5 @@ class Solution:
         m2 = reduce(lambda x, y: x + y, nums2) / len(nums2)
 
         return (m1 + m2) / 2
+
+        #TODO: find better design
