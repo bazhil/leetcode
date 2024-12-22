@@ -1,6 +1,6 @@
 class Solution:
     def reverse(self, x: int) -> int:
-        valid_diapason = [-2**31, 2**31-1]
+        valid_diapason = [0 - 2**31, 2**31 - 1]
 
         if x == 0 or x < valid_diapason[0] or x > valid_diapason[1]:
             return 0
