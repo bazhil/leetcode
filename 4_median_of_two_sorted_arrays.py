@@ -2,7 +2,9 @@ class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
 
         if nums1 and nums2:
-            median = self.find_median(nums1 + nums2)
+            arr = nums1 + nums2
+            arr.sort()
+            median = self.find_median(arr)
         elif nums1 and not nums2:
             median = self.find_median(nums1)
         elif nums2 and not nums1:
@@ -12,9 +14,6 @@ class Solution:
 
     def find_median(self, arr):
         n = len(arr)
-
-        # First we sort the array
-        arr.sort()
 
         # check for even case
         if n % 2 != 0:
