@@ -1,5 +1,5 @@
 class Solution:
-    def intToRoman(self, num: int) -> str:
+    def intToRoman_v1(self, num: int) -> str:
         m_count = num // 1000
         c_count = (num - m_count * 1000) // 100
         x_count = (num - (m_count * 1000 + c_count * 100)) // 10
@@ -33,5 +33,22 @@ class Solution:
                 roman += "IV" if i_count == 4 else "I" * i_count
             else:
                 roman += "IX" if i_count == 9 else "V" + "I" * (i_count - 5)
+
+        return roman
+
+    def intToRoman(self, num: int) -> str:
+        symbols = (
+            ("I", 1), ("IV", 4), ("V", 5), ("IX", 9),
+            ("X", 10), ("XL", 40), ("L", 50), ("XC", 90),
+            ("C", 100), ("CD", 400), ("D", 500), ("CM", 900),
+            ("M", 1000)
+        )
+
+        roman = ""
+        for sym, val in reversed(symbols):
+            count = num // val
+            if count:
+                roman += sym * count
+                num = num % val
 
         return roman
