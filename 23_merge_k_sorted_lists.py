@@ -35,7 +35,7 @@ class Solution:
 
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         if len(lists) == 0 or (len(lists) == 1 and lists[0] == []):
-            return ListNode().next
+            return None
 
         if len(lists) == 1:
             return lists[0]
