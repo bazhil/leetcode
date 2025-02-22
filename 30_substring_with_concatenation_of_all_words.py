@@ -3,7 +3,8 @@ class Solution:
         if not s or not words:
             return []
 
-        len_word = len(words[0])
+        word_length = len(words[0])
+        total_length = len(words) * word_length
         result = []
         word_count = {}
 
@@ -13,24 +14,25 @@ class Solution:
             else:
                 word_count[word] = 1
 
-        for i in range(len_word):
+        for i in range(word_length):
             left = i
             sub_count = {}
             count = 0
 
-            for j in range(i, len(s) - len_word + 1, len_word):
-                sub_word = s[j:j + len_word]
+            for j in range(i, len(s) - word_length + 1, word_length):
+                sub_word = s[j:j + word_length]
                 if sub_word in word_count:
                     if sub_word in sub_count:
                         sub_count[sub_word] += 1
                     else:
                         sub_count[sub_word] = 1
+
                     count += 1
 
                     while sub_count[sub_word] > word_count[sub_word]:
-                        sub_count[s[left:left + len_word]] -= 1
+                        sub_count[s[left:left + word_length]] -= 1
                         count -= 1
-                        left += len_word
+                        left += word_length
 
                     if count == len(words):
                         result.append(left)
@@ -38,6 +40,11 @@ class Solution:
                 else:
                     sub_count.clear()
                     count = 0
-                    left = j + len_word
+                    left = j + word_length
 
         return result
+
+
+
+
+
